@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 
 
@@ -18,10 +18,9 @@ public class ContactsActivity extends AppCompatActivity {
     DBHandler db;
 
     ListView contactsView;
-    EditText personId;
     Button returnButton;
 
-    private ArrayList<Person> contacts;
+    private ArrayList<Person> contacts; //TODO: IMPLEMENT LISTFRAGMENT!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +62,6 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void initWidgets() {
         contactsView = (ListView) findViewById(R.id.contactsView);
-        personId = (EditText) findViewById(R.id.personId);
         returnButton = (Button) findViewById(R.id.returnButton);
     }
 
@@ -77,7 +75,7 @@ public class ContactsActivity extends AppCompatActivity {
                 person.setFirstName(cursor.getString(1));
                 person.setLastName(cursor.getString(2));
                 person.setPhoneNumber(cursor.getString(3));
-                person.setBirthday(db.setPersonBirthDate(cursor.getInt(4), cursor.getInt(5), cursor.getInt(6)));
+                person.setBirthday(db.setPersonBirthDate(cursor.getInt(4), cursor.getInt(5) -1, cursor.getInt(6)));
                 persons.add(person);
             }
             while	(cursor.moveToNext());

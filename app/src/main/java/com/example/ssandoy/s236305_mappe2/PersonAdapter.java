@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -31,10 +33,12 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         TextView tvPhNr  = (TextView) convertView.findViewById(R.id.phoneNr);
         TextView tvBDay  = (TextView) convertView.findViewById(R.id.birthDay);
 
+
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         // Populate the data into the template view using the data object
         tvName.setText(person.getFirstName() + " " + person.getLastName());
         tvPhNr.setText(person.getPhoneNumber());
-        tvBDay.setText(person.getBirthday().getTime().toString());
+        tvBDay.setText(df.format(person.getBirthday().getTime()));
         // Return the completed view to render on screen
         return convertView;
     }

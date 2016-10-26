@@ -13,12 +13,12 @@ public class StartActivity extends AppCompatActivity {
 
     DBHandler db;
 
-    Button registerButton;
+    Button registerButton; //TODO: MAKE ALL PRIVATE
     Button contactsButton;
-
+    Button messageButton; //TODO: ADD exitButton
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //TODO: INIT Message her og sett melding til gratulerer?
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
@@ -43,6 +43,14 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, MessageActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
@@ -50,9 +58,10 @@ public class StartActivity extends AppCompatActivity {
     public void initWidgets() {
         registerButton = (Button) findViewById(R.id.register);
         contactsButton = (Button) findViewById(R.id.contactsButton);
+        messageButton = (Button) findViewById(R.id.messageButton);
     }
 
-    public List<Person> allContacts(List<Person> persons) {
+    public List<Person> allContacts(List<Person> persons) { //TODO: TRENGS IKKE HER?
         Cursor cursor = db.findAll();
         if	(cursor.moveToFirst())	{
             do{

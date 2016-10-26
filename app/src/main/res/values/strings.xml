@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">S236305_mappe2</string>
+    <string name="regContact">Register contact</string>
+    <string name="showContacts">Show contacts</string>
+    <string name="settings">SETTINGS</string>
+    <string name="message">MESSAGE</string>
+    <string name="contact">CONTACT</string>
+    <string name="contacts">CONTACTS</string>
+    <string name="firstname">First name</string>
+    <string name="lastname">Last name</string>
+    <string name="phone">Phone-nr</string>
+    <string name="birthday">BIRTHDAY</string>
+    <string name="birtdayMessage">HAPPY BIRTHDAY!</string>
+    <string name="submit">Submit changes</string>
+    <string name="delete">Delete contact</string>
+    <string name="exit">EXIT</string>
+    <string name="ret">RETURN</string>
+    <string name="deletePerson">You are about to delete this contact. Are you sure?</string>
+    <string name="updatePerson">You are about to change the info for this contact. Are you sure?</string>
+    <string name="warning">WARNING</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="confirm">Confirm message</string>
+    <string name="setTime">Confirm time</string>
+    <string name="messageLabel">BIRTHDAY-MESSAGE</string>
+    <string name="timeLabel">TIME OF DAY TO SEND MESSAGE</string>
+    <string name="checkBoxText">SERVICE ON/OFF</string>
 </resources>
+
+    <!--TODO: LEGGE STRINGS HER!!! !-->

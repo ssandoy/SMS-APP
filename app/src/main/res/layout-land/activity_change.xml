@@ -7,9 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.ssandoy.s236305_mappe2.ChangeActivity"
-    android:clickable="false">
+    android:background="#0E5B81"
+    tools:context="com.example.ssandoy.s236305_mappe2.ChangeActivity">
 
     <EditText
         android:layout_width="wrap_content"

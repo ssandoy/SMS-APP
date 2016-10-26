@@ -17,7 +17,7 @@ public class DBHandler {
     Context context;
 
     static final String DATABASE_NAME = "BirthdayBase";
-    static final String TABLE_CONTACTS = "Contacs";
+    static final String TABLE_CONTACTS = "Contacts";
     static final String KEY_ID = "_ID";
     static final String KEY_FIRSTNAME = "firstName";
     static final String KEY_LASTNAME = "lastName";
@@ -43,7 +43,6 @@ public class DBHandler {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            //TODO:CREATE QUERYBUILDER?
             String createTable = "CREATE TABLE " + TABLE_CONTACTS +
                     "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + KEY_FIRSTNAME + " TEXT, "
@@ -85,7 +84,19 @@ public class DBHandler {
     }
 
     public boolean deletePerson(int id) {
-        return db.delete(TABLE_CONTACTS, KEY_ID + "='" + id + "'", null) > 0;
+        return db.delete(TABLE_CONTACTS, KEY_ID + "='" + id +"'", null) > 0;
+    }
+
+    public boolean update(String firstName, String lastName, String phoneNr, int bYear, int bMonth, int bDay, int id) {
+        ContentValues cv = new ContentValues(6);
+
+        cv.put(KEY_FIRSTNAME, firstName);
+        cv.put(KEY_LASTNAME, lastName);
+        cv.put(KEY_PH_NO, phoneNr);
+        cv.put(KEY_YEAR, bYear);
+        cv.put(KEY_MONTH, bMonth);
+        cv.put(KEY_DAY, bDay);
+        return db.update(TABLE_CONTACTS,cv, KEY_ID +  "='" + id +"'",null) > 0;
     }
 
     public Cursor findPersonByID(int id) {
@@ -95,7 +106,15 @@ public class DBHandler {
         return cur;
 
     }
-    //TODO: MORE DATABASE-METHODS
+    //TODO: MORE DATABASE-METHODS.
+
+    public Cursor hasBirthday(int month, int day) {
+        Cursor cur;
+        String[] columns = {KEY_ID,KEY_FIRSTNAME,KEY_LASTNAME,KEY_PH_NO, KEY_YEAR, KEY_MONTH, KEY_DAY};
+        cur = db.query( TABLE_CONTACTS, columns, KEY_DAY + " = '" + day + "' and " + KEY_MONTH + " = '"
+                + month + "'",null,null,null,KEY_ID);
+        return cur;
+    }
 
     public Cursor findPersonByPhoneNr(String phoneNr) {
         String[] columns = {KEY_ID,KEY_FIRSTNAME,KEY_LASTNAME,KEY_PH_NO, KEY_YEAR, KEY_MONTH, KEY_DAY};
@@ -104,9 +123,9 @@ public class DBHandler {
         return cur;
     }
 
-    public Calendar setPersonBirthDate(int day, int month, int year){ //TODO: TEST PÅ DETTE?
+    public Calendar setPersonBirthDate(int day, int month, int year){
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month-1, day);
+        calendar.set(year, month, day);
         return calendar;
     }
 

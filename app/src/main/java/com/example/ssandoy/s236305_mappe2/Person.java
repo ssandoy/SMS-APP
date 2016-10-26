@@ -5,13 +5,13 @@ import java.util.Calendar;
 /**
  * Created by ssandoy on 07.10.2016.
  */
-public class Person { //TODO: BENYTTE ANNET NAVN?
+public class Person {
 
     private int _ID;
     private String firstName;
     private String lastName;
-    private String phoneNumber; //TODO: INT OR STRING?
-    private Calendar birthday; //TODO BRUKE DATE OR LOCALDATE?
+    private String phoneNumber;
+    private Calendar birthday;
 
     public Person(int _ID, String firstName, String lastName, String phoneNumber, Calendar birthday) {
         this._ID = _ID;
@@ -24,8 +24,6 @@ public class Person { //TODO: BENYTTE ANNET NAVN?
     public Person() {
 
     }
-
-    //TODO: FLERE KONSTRUKTØRER?
 
     public int get_ID() {
         return _ID;

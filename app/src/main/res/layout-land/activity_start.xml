@@ -10,29 +10,26 @@
         android:layout_height="122dp"
         android:id="@+id/register"
         android:background="@drawable/contacticon"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
-
-    <Button
-        android:id="@+id/contactsButton"
-        android:layout_width="168dp"
-        android:layout_height="122dp"
-        android:background="@drawable/contactsicon"
-        android:layout_gravity="center_horizontal" />
-
 
     <Button
         android:layout_width="150dp"
         android:layout_height="122dp"
         android:background="@drawable/messageicon"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/messageButton" />
+        android:id="@+id/messageButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/contactsButton"
+        android:layout_width="168dp"
+        android:layout_height="122dp"
+        android:background="@drawable/contactsicon" />
+
 
     <Button
         android:layout_width="150dp"
         android:layout_height="122dp"
         android:id="@+id/exitButton"
-        android:layout_gravity="center_horizontal"
         android:background="@drawable/exiticon" />
 
 </LinearLayout>

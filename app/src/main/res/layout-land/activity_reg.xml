@@ -15,45 +15,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textFieldLayout">
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/FirstNameET"
-        android:layout_below="@+id/contactTextView"
-        android:layout_alignStart="@+id/contactTextView"
-        android:layout_marginLeft="35dp"
-        android:textColor="#42C0FB" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/FirstNameET"
+            android:layout_below="@+id/contactTextView"
+            android:layout_alignStart="@+id/contactTextView"
+            android:layout_marginLeft="35dp"
+            android:textColor="#42C0FB" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/LastNameET"
-        android:layout_below="@+id/FirstNameET"
-        android:layout_alignStart="@+id/FirstNameET"
-        android:textColor="#42C0FB" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/LastNameET"
+            android:layout_below="@+id/FirstNameET"
+            android:layout_alignStart="@+id/FirstNameET"
+            android:textColor="#42C0FB" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/phoneNrET"
-        android:layout_below="@+id/LastNameET"
-        android:layout_alignStart="@+id/LastNameET"
-        android:textColor="#42C0FB" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/phoneNrET"
+            android:layout_below="@+id/LastNameET"
+            android:layout_alignStart="@+id/LastNameET"
+            android:textColor="#42C0FB" />
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/contact"
-        android:id="@+id/contactTextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/contact"
+            android:id="@+id/contactTextView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:textColor="#42C0FB" />
         <TextView
             android:layout_width="wrap_content"
@@ -98,26 +98,26 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textFieldLayout">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/birthday"
-        android:id="@+id/birthDayTextView"
-        android:layout_centerHorizontal="true"
-        android:textColor="#42C0FB" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/birthday"
+            android:id="@+id/birthDayTextView"
+            android:layout_centerHorizontal="true"
+            android:textColor="#42C0FB" />
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/birthDatePicker"
-        android:calendarViewShown="false"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/birthDayTextView"
-        android:layout_centerHorizontal="true"
-        android:clickable="false"
-        android:layout_alignParentStart="true"
-        />
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/birthDatePicker"
+            android:calendarViewShown="false"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/birthDayTextView"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:layout_alignParentStart="true"
+            />
     </RelativeLayout>
 
 
