@@ -7,15 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ContactsActivity">
-    <Button
-        android:id="@+id/bSearch"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Search"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:textSize="24sp"/>
+    tools:context=".ContactsActivity"
+    android:background="#19485E"
+    android:clickable="false">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,21 +18,36 @@
         android:id="@+id/contactsHeader"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#42C0FB"
+        android:layout_marginLeft="2dp" />
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:id="@+id/contactsView"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchText"
+        android:divider="@color/bright_foreground_material_light"
+        android:dividerHeight="1dp"/> <!--TODO: FIX COLOR!-->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:hint="@string/search"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/searchText"
         android:layout_below="@+id/contactsHeader"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/returnButton"
-        android:layout_below="@+id/contactsView"
-        android:layout_alignEnd="@+id/contactsHeader"
-        android:text="@string/ret" />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/button"
+        android:background="@drawable/contactsicon2"
+        android:layout_above="@+id/searchText"
+        android:layout_toStartOf="@+id/contactsHeader" />
 
 </RelativeLayout>

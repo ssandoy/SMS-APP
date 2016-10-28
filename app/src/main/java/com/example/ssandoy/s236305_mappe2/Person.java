@@ -21,6 +21,14 @@ public class Person {
         this.birthday = birthday;
     }
 
+    public Person(String firstName, String lastName, String phoneNumber, Calendar birthday) {
+        this._ID = _ID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+    }
+
     public Person() {
 
     }

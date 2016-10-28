@@ -4,32 +4,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#19485E">
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="122dp"
-        android:id="@+id/register"
-        android:background="@drawable/contacticon"
-        android:layout_marginTop="20dp" />
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="122dp"
-        android:background="@drawable/messageicon"
-        android:id="@+id/messageButton"
-        android:layout_gravity="center_horizontal" />
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_weight="1"
+                android:layout_width="50dp"
+                android:background="@drawable/contacticon"
+                android:layout_height="125dp" />
 
-    <Button
-        android:id="@+id/contactsButton"
-        android:layout_width="168dp"
-        android:layout_height="122dp"
-        android:background="@drawable/contactsicon" />
+            <Button
+                android:id="@+id/contactsButton"
+                android:layout_weight="1"
+                android:layout_width="405dp"
+                android:background="@drawable/contactsicon"
+                android:layout_height="135dp"
+                android:layout_marginTop="4dp" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/messageButton"
+                android:layout_weight="1"
+                android:layout_width="405dp"
+                android:background="@drawable/messageicon"
+                android:layout_height="125dp"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_weight="1"
+                android:layout_width="405dp"
+                android:background="@drawable/languageicon"
+                android:layout_height="125dp"
+                android:layout_marginTop="10dp" />
+        </TableRow>
 
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="122dp"
-        android:id="@+id/exitButton"
-        android:background="@drawable/exiticon" />
+    </TableLayout>
 
 </LinearLayout>

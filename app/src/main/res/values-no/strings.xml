@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">S236305_mappe2</string>
+    <string name="regContact">Registrer kontakt</string>
+    <string name="showContacts">Vis kontakter</string>
+    <string name="settings">INSTILLINGER</string>
+    <string name="message">MELDING</string>
+    <string name="contact">REGISTRER KONTAKT</string>
+    <string name="contacts">KONTAKTER</string>
+    <string name="firstname">Fornavn</string>
+    <string name="lastname">Etternavn</string>
+    <string name="phone">Telefon-nr</string>
+    <string name="birthday">BURSDAG</string>
+    <string name="birtdayMessage">Gratulerer med dagen!</string>
+    <string name="submit">Bekreft endringer</string>
+    <string name="delete">Slett kontakt</string>
+    <string name="exit">AVSLUTT</string>
+    <string name="ret">TILBAKE</string>
+    <string name="deletePerson">Er du sikker på at du vil slette kontakten?</string>
+    <string name="updatePerson">Er du sikker på at du vil endre kontakten?</string>
+    <string name="warning">ADVARSEL</string>
+    <string name="yes">JA</string>
+    <string name="no">NEI</string>
+    <string name="confirm">Bekreft melding</string>
+    <string name="messageLabel">MELDING</string>
+    <string name="timeLabel">TIDSPUNKT Å SENDE MELDING</string>
+    <string name="checkBoxText">SERVICE AV/PÅ</string>
+    <string name="search">Søk etter kontakter..</string>
+    <string name="returns">Tilbake</string>
+    <string name="nrValidate">Du må skrive inn et 8-sifret telefonnummer</string>
+    <string name="nameValidate">Ikke et gyldig navn..</string>
+    <string name="exitContact">Er du sikker på at du vil avbryte registrering?</string>
+    <string name="contactAdded">Suksess! Kontakt registrert</string>
+    <string name="contactInfo">KONTAKTINFO</string>
+    <string name="langText">VELG ØNSKET SPRÅK</string>
+
+</resources>
+
+    <!--TODO: LEGGE STRINGS HER!!! !-->

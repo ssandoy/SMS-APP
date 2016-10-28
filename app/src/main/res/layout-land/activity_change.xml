@@ -7,70 +7,113 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#0E5B81"
-    tools:context="com.example.ssandoy.s236305_mappe2.ChangeActivity">
+    android:background="#19485E"
+    tools:context="com.example.ssandoy.s236305_mappe2.ChangeActivity"
+    android:clickable="false">
 
-    <EditText
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/FirstNameET"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:id="@+id/textFieldLayout">
+        <EditText
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/FirstNameET"
+            android:layout_marginLeft="35dp"
+            android:textColor="#42C0FB"
+            android:layout_below="@+id/contactTextView"
+            android:layout_toEndOf="@+id/firstNameLabel"
+            android:layout_marginStart="21dp" />
 
-    <EditText
+        <EditText
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/LastNameET"
+            android:layout_below="@+id/FirstNameET"
+            android:layout_alignStart="@+id/FirstNameET"
+            android:textColor="#42C0FB" />
+
+        <EditText
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/phoneNrET"
+            android:layout_below="@+id/LastNameET"
+            android:layout_alignStart="@+id/LastNameET"
+            android:textColor="#42C0FB"
+            android:clickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/contactInfo"
+            android:id="@+id/contactTextView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#42C0FB" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:id="@+id/phoneLabel"
+            android:autoText="false"
+            android:layout_alignBottom="@+id/phoneNrET"
+            android:layout_alignParentStart="false"
+            android:layout_marginLeft="5dp"
+            android:textSize="20dp"
+            android:textColor="#42C0FB" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/firstname"
+            android:id="@+id/firstNameLabel"
+            android:layout_alignBottom="@+id/FirstNameET"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="20dp"
+            android:textColor="#42C0FB" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/lastname"
+            android:id="@+id/lastNameLabel"
+            android:layout_above="@+id/phoneNrET"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:textSize="20dp"
+            android:textColor="#42C0FB" />
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/LastNameET"
-        android:layout_below="@+id/FirstNameET"
-        android:layout_alignStart="@+id/FirstNameET" />
+        android:id="@+id/birthDayLayout"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textFieldLayout">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/phoneNrET"
-        android:layout_below="@+id/LastNameET"
-        android:layout_alignStart="@+id/LastNameET" />
+    </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        android:id="@+id/saveButton"
-        android:layout_below="@+id/birthDatePicker"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"
-        android:id="@+id/deleteButton"
-        android:layout_alignTop="@+id/saveButton"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/contact"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/birthday"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/phoneNrET"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp" />
+        android:id="@+id/birthDayTextView"
+        android:textColor="#42C0FB"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="62dp" />
 
     <DatePicker
         android:layout_width="wrap_content"
@@ -78,45 +121,58 @@
         android:id="@+id/birthDatePicker"
         android:calendarViewShown="false"
         android:layout_marginLeft="20dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:clickable="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/phone"
-        android:id="@+id/phoneLabel"
-        android:autoText="false"
-        android:layout_alignBottom="@+id/phoneNrET"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/firstname"
-        android:id="@+id/firstNameLabel"
-        android:layout_alignBottom="@+id/FirstNameET"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="1dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/lastname"
-        android:id="@+id/lastNameLabel"
-        android:layout_above="@+id/phoneNrET"
-        android:layout_alignParentStart="true" />
+        android:clickable="true"
+        android:layout_below="@+id/birthDayTextView"
+        android:layout_toEndOf="@+id/textFieldLayout" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/exit"
+        android:text="@string/submit"
+        android:id="@+id/saveButton"
+        android:background="@null"
+        android:textSize="20dp"
+        android:textColor="#42C0FB"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/submitIcon" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:id="@+id/deleteButton"
+        android:background="@null"
+        android:textColor="#42C0FB"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/saveButton"
+        android:layout_toEndOf="@+id/textFieldLayout" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/submitIcon"
+        android:background="@drawable/greenicon"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/birthDayLayout"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:id="@+id/deleteIcon"
+        android:background="@drawable/redicon"
+        android:layout_alignTop="@+id/submitIcon"
+        android:layout_toStartOf="@+id/deleteButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:id="@+id/exitButton"
-        android:layout_below="@+id/saveButton"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/exiticonred"
+        android:layout_alignBottom="@+id/submitIcon"
+        android:layout_alignEnd="@+id/birthDatePicker" />
 
 </RelativeLayout>

@@ -4,12 +4,12 @@
     <string name="showContacts">Show contacts</string>
     <string name="settings">SETTINGS</string>
     <string name="message">MESSAGE</string>
-    <string name="contact">CONTACT</string>
+    <string name="contact">REGISTER CONTACT</string>
     <string name="contacts">CONTACTS</string>
     <string name="firstname">First name</string>
     <string name="lastname">Last name</string>
     <string name="phone">Phone-nr</string>
-    <string name="birthday">BIRTHDAY</string>
+    <string name="birthday">BIRTHDATE</string>
     <string name="birtdayMessage">HAPPY BIRTHDAY!</string>
     <string name="submit">Submit changes</string>
     <string name="delete">Delete contact</string>
@@ -21,10 +21,18 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="confirm">Confirm message</string>
-    <string name="setTime">Confirm time</string>
-    <string name="messageLabel">BIRTHDAY-MESSAGE</string>
-    <string name="timeLabel">TIME OF DAY TO SEND MESSAGE</string>
+    <string name="messageLabel">MESSAGE</string>
+    <string name="timeLabel">TIME TO SEND MESSAGE</string>
     <string name="checkBoxText">SERVICE ON/OFF</string>
+    <string name="search">Search contacts..</string>
+    <string name="returns">Return</string>
+    <string name="nrValidate">You need to type in an eight digit number as your phone-nr</string>
+    <string name="nameValidate">Not a valid name..</string>
+    <string name="exitContact">Are you sure you want to dismiss creating your contact?</string>
+    <string name="contactAdded">Success! Contact added</string>
+    <string name="contactInfo">CONTACT INFO</string>
+    <string name="langText">PLEASE SELECT DESIRED LANGUAGE</string>
+
 </resources>
 
-    <!--TODO: LEGGE STRINGS HER!!! !-->
+    <!--TODO: LEGGE STRINGS HER!!! !--><!--TODO: IMPLEMENTERE NORSK? !-->

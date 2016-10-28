@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.Calendar;
 
@@ -27,16 +28,15 @@ public class SendMessagePeriodicService extends Service {
         Intent i =	new	Intent(this, SendMessageService.class);
         PendingIntent pintent = PendingIntent.getService(this,	0,	i,	0);
 
-        //TODO: IMPLEMENT VALUES FROM SHAREDPREFERENCES
+        //TODO: SETTE HVER GANG CONFIRMMESSAGE TRYKKES PÅ
+        cal.set(Calendar.MINUTE, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("minute", -1));
+        cal.set(Calendar.HOUR_OF_DAY, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("hour", -1));
+        Log.d("MINUTE", ""+PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("minute", -1));
+        Log.d("HOUR", ""+ PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("hour", -1));
 
-        cal.set(Calendar.MINUTE, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("min", 1));
-        cal.set(Calendar.HOUR_OF_DAY, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("time", 1));
+        AlarmManager alarm =  (AlarmManager)getSystemService(Context.ALARM_SERVICE); //TODO: SETREPEATING IS CALLED AT CREATION.
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pintent); //TODO: setExact vs setReapeating SKRIV OM VALGET OG API19
 
-        //TODO: LES OM BROADCASTRECEIVER OG IMPLEMENTER DETTE!
-
-        AlarmManager alarm =  (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), 1000*60*60*24,pintent); //Multiplikasjonen som utføres gjør at det utføres daglig
-
-        return super.onStartCommand(intent, flags, startId); //TODO: DENNE? eller return Service.STAR_NOT_STICKY?
+        return super.onStartCommand(intent, flags, startId); //TODO: VS SERVICE_START NOT STICKY?
     }
 }

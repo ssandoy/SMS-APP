@@ -16,18 +16,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/textFieldLayout">
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/FirstNameET"
-            android:layout_below="@+id/contactTextView"
-            android:layout_alignStart="@+id/contactTextView"
             android:layout_marginLeft="35dp"
-            android:textColor="#42C0FB" />
+            android:textColor="#42C0FB"
+            android:layout_below="@+id/contactTextView"
+            android:layout_toEndOf="@+id/firstNameLabel"
+            android:layout_marginStart="21dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
@@ -37,14 +38,15 @@
             android:textColor="#42C0FB" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
             android:id="@+id/phoneNrET"
             android:layout_below="@+id/LastNameET"
             android:layout_alignStart="@+id/LastNameET"
-            android:textColor="#42C0FB" />
+            android:textColor="#42C0FB"
+            android:clickable="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +56,8 @@
             android:id="@+id/contactTextView"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textColor="#42C0FB" />
+            android:textColor="#42C0FB"
+            android:paddingLeft="30dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,6 +93,14 @@
             android:layout_marginLeft="5dp"
             android:textSize="20dp"
             android:textColor="#42C0FB" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/button6"
+            android:background="@drawable/contacticon"
+            android:layout_alignBottom="@+id/contactTextView"
+            android:layout_alignStart="@+id/firstNameLabel" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -98,26 +109,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textFieldLayout">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/birthday"
-            android:id="@+id/birthDayTextView"
-            android:layout_centerHorizontal="true"
-            android:textColor="#42C0FB" />
 
-        <DatePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/birthDatePicker"
-            android:calendarViewShown="false"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@+id/birthDayTextView"
-            android:layout_centerHorizontal="true"
-            android:clickable="false"
-            android:layout_alignParentStart="true"
-            />
     </RelativeLayout>
 
 
@@ -127,21 +119,44 @@
         android:layout_height="wrap_content"
         android:text="@string/exit"
         android:id="@+id/exitButton"
-        android:layout_alignTop="@+id/saveButton"
-        android:layout_alignEnd="@+id/birthDayLayout"
         android:background="@null"
         android:textColor="#42C0FB"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/birthDatePicker"
+        android:layout_alignEnd="@+id/birthDatePicker"
+        android:layout_marginRight="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/regContact"
         android:id="@+id/saveButton"
-        android:layout_below="@+id/birthDayLayout"
-        android:layout_toStartOf="@+id/exitButton"
         android:background="@null"
         android:textColor="#42C0FB"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/birthDatePicker"
+        android:layout_toEndOf="@+id/birthDayLayout"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/birthday"
+        android:id="@+id/birthDayTextView"
+        android:textColor="#42C0FB"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="62dp" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/birthDatePicker"
+        android:calendarViewShown="false"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"
+        android:layout_below="@+id/birthDayTextView"
+        android:layout_toEndOf="@+id/textFieldLayout" />
 
 </RelativeLayout>
