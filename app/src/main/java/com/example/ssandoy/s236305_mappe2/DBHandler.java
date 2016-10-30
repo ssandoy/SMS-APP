@@ -3,9 +3,9 @@ package com.example.ssandoy.s236305_mappe2;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -37,7 +37,7 @@ public class DBHandler {
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
-        public DatabaseHelper(Context context) { //TODO FIX CONSTRUCOR
+        public DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
@@ -52,7 +52,6 @@ public class DBHandler {
                     + KEY_MONTH + " INT, "
                     + KEY_YEAR + " INT"
                     + ")";
-            Log.d("SQL", createTable);
             db.execSQL(createTable);
         }
 
@@ -63,7 +62,7 @@ public class DBHandler {
         }
     } //END OF HELPER
 
-    public DBHandler open() { //TODO: throw SQLException? AND CATCH IN ACITIVITIES?
+    public DBHandler open() throws SQLException {
         db = DBHelper.getWritableDatabase();
         return this;
     }
@@ -72,13 +71,19 @@ public class DBHandler {
         DBHelper.close();
     }
 
+    public void reopen() throws SQLException{
+        close();
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        db = dbHelper.getWritableDatabase();
+    }
+
     public void insert(ContentValues cv)
     {
         db.insert(TABLE_CONTACTS,null,cv);
     }
 
     public Cursor findAll(){
-        String	selectQuery	=	"SELECT * FROM "+ TABLE_CONTACTS;
+        String	selectQuery	=	"SELECT * FROM "+ TABLE_CONTACTS + " ORDER BY " + KEY_FIRSTNAME;
         Cursor cursor = db.rawQuery(selectQuery,null);
         return cursor;
     }
@@ -106,20 +111,12 @@ public class DBHandler {
         return cur;
 
     }
-    //TODO: MORE DATABASE-METHODS.
 
     public Cursor hasBirthday(int month, int day) {
         Cursor cur;
         String[] columns = {KEY_ID,KEY_FIRSTNAME,KEY_LASTNAME,KEY_PH_NO, KEY_YEAR, KEY_MONTH, KEY_DAY};
         cur = db.query( TABLE_CONTACTS, columns, KEY_DAY + " = '" + day + "' and " + KEY_MONTH + " = '"
                 + month + "'",null,null,null,KEY_ID);
-        return cur;
-    }
-
-    public Cursor findPersonByPhoneNr(String phoneNr) {
-        String[] columns = {KEY_ID,KEY_FIRSTNAME,KEY_LASTNAME,KEY_PH_NO, KEY_YEAR, KEY_MONTH, KEY_DAY};
-        Cursor cur = db.query(TABLE_CONTACTS, columns, KEY_PH_NO + "==" + phoneNr, null, null, null, KEY_ID);
-        cur.moveToFirst();
         return cur;
     }
 

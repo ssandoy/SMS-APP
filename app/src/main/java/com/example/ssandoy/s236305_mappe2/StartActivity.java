@@ -3,65 +3,120 @@ package com.example.ssandoy.s236305_mappe2;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
     DBHandler db;
 
-    Button registerButton; //TODO: MAKE ALL PRIVATE
-    Button contactsButton;
-    Button messageButton; //TODO: ADD exitButton
+    private EditText searchText;
+
+    private ArrayList<Person> contacts;
+
+    private ListView contactsView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { //TODO: INIT Message her og sett melding til gratulerer?
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_contacts);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+
 
         initWidgets();
 
         db = new DBHandler(this);
-        db.open();
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, RegActivity.class);
-                startActivity(intent);
-            }
-        });
+        contacts = allContacts();
 
-        contactsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, ContactsActivity.class);
-                startActivity(intent);
-            }
-        });
+        final PersonAdapter personAdapter = new PersonAdapter(this, contacts);
 
-        messageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, MessageActivity.class);
-                startActivity(intent);
-            }
-        });
+        contactsView.setAdapter(personAdapter);
+
+
+        createListeners(personAdapter);
 
 
 
+
+    }
+
+    @Override
+    public	boolean onCreateOptionsMenu(Menu menu)	{
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu,	menu);
+        return	true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch	(item.getItemId())	{
+           case	R.id.action_regContact:
+               Intent i  = new Intent(StartActivity.this,RegActivity.class);
+               startActivity(i);
+               break;
+            case R.id.action_settings:
+                Intent intent2  = new Intent(StartActivity.this,MessageActivity.class);
+                startActivity(intent2);
+                break;
+            default:
+                break;
+        }
+        return	true;
     }
 
     public void initWidgets() {
-        registerButton = (Button) findViewById(R.id.register);
-        contactsButton = (Button) findViewById(R.id.contactsButton);
-        messageButton = (Button) findViewById(R.id.messageButton);
+        contactsView = (ListView) findViewById(R.id.contactsView);
+        searchText = (EditText) findViewById(R.id.searchText);
     }
 
-    public List<Person> allContacts(List<Person> persons) { //TODO: TRENGS IKKE HER?
+    public void createListeners(final PersonAdapter personAdapter) {
+
+        contactsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                Intent intent = new Intent(StartActivity.this, DisplayActivity.class);
+                int PID = personAdapter.getPersonID(position);
+                intent.putExtra("ID", PID);
+                startActivity(intent);
+            }
+        });
+
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                personAdapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                personAdapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                personAdapter.getFilter().filter(s.toString());
+            }
+        });
+    }
+
+    public ArrayList<Person> allContacts() {
+        db.open();
+        ArrayList<Person> persons = new ArrayList<>();
         Cursor cursor = db.findAll();
         if	(cursor.moveToFirst())	{
             do{
@@ -70,12 +125,13 @@ public class StartActivity extends AppCompatActivity {
                 person.setFirstName(cursor.getString(1));
                 person.setLastName(cursor.getString(2));
                 person.setPhoneNumber(cursor.getString(3));
-                person.setBirthday(db.setPersonBirthDate(cursor.getInt(4), cursor.getInt(5), cursor.getInt(6)));
+                person.setBirthday(db.setPersonBirthDate(cursor.getInt(4), cursor.getInt(5) -1, cursor.getInt(6)));
                 persons.add(person);
             }
             while	(cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return persons;
     }
 }

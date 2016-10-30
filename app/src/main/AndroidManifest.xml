@@ -2,18 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ssandoy.s236305_mappe2">
 
-    <uses-permission android:name="com.example.ssandoy.s236305_mappe2.contentprovider.permission" />
+    <uses-permission android:name="com.example.ssandoy.s236305_mappe2.permission" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <permission android:name="com.example.ssandoy.s236305_mappe2.contentprovider.permission" />
+    <permission android:name="com.example.ssandoy.s236305_mappe2.permission" />
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <!-- TODO: SKRIV OM DETTE I DOKUMENTASJON! Se ned i receiver også ! -->
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/birthdayserviceicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,10 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegActivity" />
-        <activity android:name=".ContactsActivity" />
+        <activity
+            android:name=".RegActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ChangeActivity" />
-        <activity android:name=".MessageActivity" />
+        <activity
+            android:name=".MessageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <service
             android:name=".SendMessageService"
@@ -39,9 +42,7 @@
             android:exported="true" />
 
         <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="true">
+            android:name=".MyReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -49,13 +50,13 @@
 
         <provider
             android:name=".PersonContentProvider"
-            android:authorities="com.example.ssandoy.s236305_mappe2.contentprovider"
+            android:authorities="com.example.ssandoy.s236305_mappe2"
             android:enabled="true"
             android:exported="true"
             android:readPermission="com.example.ssandoy.s236305_mappe2.permission"
-            android:writePermission="com.example.ssandoy.s236305_mappe2.permission"></provider>
+            android:writePermission="com.example.ssandoy.s236305_mappe2.permission" />
 
-        <activity android:name=".LanguageActivity"></activity>
+        <activity android:name=".DisplayActivity"></activity>
     </application>
 
 </manifest>

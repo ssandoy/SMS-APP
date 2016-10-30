@@ -10,14 +10,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 /**
  * Created by ssandoy on 18.10.2016.
  */
-public class PersonContentProvider extends ContentProvider { //FIXME
-
-
+public class PersonContentProvider extends ContentProvider {
 
     static final String DATABASE_NAME = "BirthdayBase";
     static final String TABLE_CONTACTS = "Contacts";
@@ -33,15 +30,14 @@ public class PersonContentProvider extends ContentProvider { //FIXME
     private DatabaseHelper DBHelper;
     SQLiteDatabase db;
 
-    public final static String PROVIDER = "com.example.ssandoy.s236305_mappe2.contentprovider";
+    public final static String PROVIDER = "com.example.ssandoy.s236305_mappe2";
     private static final int CONTACT =1;
     private static final int MCONTACT=2;
 
-    public static final Uri CONTENT_URI =Uri.parse("content://"+ PROVIDER + "/contact");
+    public static final Uri CONTENT_URI = Uri.parse("content://"+ PROVIDER + "/contact");
     private static final UriMatcher uriMatcher;
     static{
-        uriMatcher = new
-                UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(PROVIDER, "contact",MCONTACT);
         uriMatcher.addURI(PROVIDER, "contact/#",CONTACT);
     }
@@ -63,14 +59,12 @@ public class PersonContentProvider extends ContentProvider { //FIXME
                     + KEY_MONTH + " INT, "
                     + KEY_YEAR + " INT"
                     + ")";
-            Log.d("CONTENTPROVIDER", createTable);
             db.execSQL(createTable);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL("drop table if exists " + TABLE_CONTACTS);
-            Log.d("CONTENTPROVIDER","updated");
             onCreate(db);
         }
     }//SLUTT PÅ HELPERCLASS
@@ -86,7 +80,20 @@ public class PersonContentProvider extends ContentProvider { //FIXME
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return null;
+        {
+            Cursor cur=null;
+            if (uriMatcher.match(uri) ==CONTACT)
+            {
+                cur=db.query(TABLE_CONTACTS,projection, KEY_ID + " = " +
+                        uri.getPathSegments().get(1)
+                        ,selectionArgs, null, null, sortOrder);
+                return cur;}
+            else{
+                cur=db.query(TABLE_CONTACTS,null, null, null, null, null,
+                        null);
+                return cur;
+            }
+        }
     }
 
     @Nullable
@@ -121,11 +128,34 @@ public class PersonContentProvider extends ContentProvider { //FIXME
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
+
+        if (uriMatcher.match(uri)==CONTACT){
+            db.delete(TABLE_CONTACTS, KEY_ID + " = " +
+                    uri.getPathSegments().get(1),selectionArgs);
+            getContext().getContentResolver().notifyChange(uri,null);
+            return 1;
+        }
+        if (uriMatcher.match(uri) == MCONTACT){
+            db.delete(TABLE_CONTACTS,null,null);
+            getContext().getContentResolver().notifyChange(uri,null);
+            return 2;
+        }
         return 0;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        if (uriMatcher.match(uri)== CONTACT){
+            db.update(TABLE_CONTACTS, values,KEY_ID + " = " +
+                    uri.getPathSegments().get(1),null);
+            getContext().getContentResolver().notifyChange(uri, null);
+            return 1;
+        }
+        if (uriMatcher.match(uri) == MCONTACT){
+            db.update(TABLE_CONTACTS, null, null, null);
+            getContext().getContentResolver().notifyChange(uri, null);
+            return 2;
+        }
         return 0;
     }
 }

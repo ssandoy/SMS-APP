@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/FirstNameET"
+        android:id="@+id/FirstNameTV"
         android:layout_marginLeft="35dp"
         android:textColor="#42C0FB"
         android:layout_below="@+id/contactTextView"
@@ -31,9 +31,9 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/LastNameET"
-        android:layout_below="@+id/FirstNameET"
-        android:layout_alignStart="@+id/FirstNameET"
+        android:id="@+id/LastNameTV"
+        android:layout_below="@+id/FirstNameTV"
+        android:layout_alignStart="@+id/FirstNameTV"
         android:textColor="#42C0FB" />
 
     <EditText
@@ -41,9 +41,9 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/phoneNrET"
-        android:layout_below="@+id/LastNameET"
-        android:layout_alignStart="@+id/LastNameET"
+        android:id="@+id/phoneNrTV"
+        android:layout_below="@+id/LastNameTV"
+        android:layout_alignStart="@+id/LastNameTV"
         android:textColor="#42C0FB" />
 
         <TextView
@@ -56,14 +56,14 @@
             android:layout_marginRight="10dp"
             android:textSize="20dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_toEndOf="@+id/phoneLabel" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone"
             android:id="@+id/phoneLabel"
             android:autoText="false"
-            android:layout_alignBottom="@+id/phoneNrET"
+            android:layout_alignBottom="@+id/phoneNrTV"
             android:layout_alignParentStart="false"
             android:layout_marginLeft="5dp"
             android:textSize="20dp"
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="@string/firstname"
             android:id="@+id/firstNameLabel"
-            android:layout_alignBottom="@+id/FirstNameET"
+            android:layout_alignBottom="@+id/FirstNameTV"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="1dp"
             android:layout_marginLeft="5dp"
@@ -87,7 +87,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/lastname"
             android:id="@+id/lastNameLabel"
-            android:layout_above="@+id/phoneNrET"
+            android:layout_above="@+id/phoneNrTV"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="5dp"
             android:textSize="20dp"
@@ -99,13 +99,23 @@
             android:id="@+id/button2"
             android:background="@drawable/contacticon"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/firstNameLabel"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="3dp" />
+            android:layout_toStartOf="@+id/contactTextView"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/exitButton"
+            android:background="@drawable/exiticonred"
+            android:textColor="#42C0FB"
+            android:textSize="20dp"
+            android:layout_alignBottom="@+id/contactTextView"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:id="@+id/birthDayLayout"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
@@ -139,11 +149,9 @@
         android:text="@string/regContact"
         android:id="@+id/saveButton"
         android:background="@null"
-        android:textColor="#42C0FB"
-        android:textSize="18dp"
+        android:textColor="#11FD40"
+        android:textSize="20dp"
         android:layout_below="@+id/birthDayLayout"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:layout_alignEnd="@+id/birthDayLayout" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

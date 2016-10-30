@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -29,8 +28,6 @@ public class SendMessageService extends Service {
 
         int day = cal.get(Calendar.DAY_OF_MONTH);
         int month = cal.get(Calendar.MONTH) +1; //INDEXED FROM 0-11
-        Log.d("SMS-service",  "MONTH: " + month);
-        Log.d("SMS-service", "DAY: " + day);
 
         Cursor cur = db.hasBirthday(month, day);
 
@@ -38,7 +35,6 @@ public class SendMessageService extends Service {
         String message = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("message","");
         if(cur.moveToFirst()) {
             do{
-                Log.d("SMS", "SENDING MESSAGE"); //TODO: WHY NOT LOGGED!?
                 smsManager.sendTextMessage(cur.getString(cur.getColumnIndex(db.KEY_PH_NO)),null,message,null,null);
             } while (cur.moveToNext());
         }

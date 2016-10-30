@@ -11,14 +11,12 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
  * Created by ssandoy on 15.10.2016.
  */
-public class PersonAdapter extends BaseAdapter implements Filterable{ //TODO: TRENGER VI SORT NÅR VI HAR SEARCH?
+public class PersonAdapter extends BaseAdapter implements Filterable{
 
     private ArrayList<Person> mOriginalValues;
     private ArrayList<Person> mDisplayedValues;
@@ -53,42 +51,32 @@ public class PersonAdapter extends BaseAdapter implements Filterable{ //TODO: TR
             @Override
             protected void publishResults(CharSequence constraint,FilterResults results) {
 
-                mDisplayedValues = (ArrayList<Person>) results.values; // has the filtered values
-                notifyDataSetChanged();  // notifies the data with new filtered values
+                mDisplayedValues = (ArrayList<Person>) results.values;
+                notifyDataSetChanged();
             }
 
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
+                FilterResults results = new FilterResults();
                 ArrayList<Person> FilteredArrList = new ArrayList<Person>();
 
                 if (mOriginalValues == null) {
-                    mOriginalValues = new ArrayList<Person>(mDisplayedValues); // saves the original data in mOriginalValues
+                    mOriginalValues = new ArrayList<>(mDisplayedValues);
                 }
 
-                /********
-                 *
-                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
-                 *  else does the Filtering and returns FilteredArrList(Filtered)
-                 *
-                 ********/
                 if (constraint == null || constraint.length() == 0) {
 
-                    // set the Original result to return
                     results.count = mOriginalValues.size();
                     results.values = mOriginalValues;
                 } else {
                     constraint = constraint.toString().toLowerCase();
-                    for (int i = 0; i < mOriginalValues.size(); i++) {
+                    for (int i = 0; i < mOriginalValues.size(); i++) { //SJEKK PÅ OM FILTER TREFFER
                          String data1 = mOriginalValues.get(i).getFirstName();
                          String data2 = mOriginalValues.get(i).getLastName();
-                         String data3 = mOriginalValues.get(i).getPhoneNumber();
-                        if (data1.toLowerCase().contains(constraint.toString()) || data2.toLowerCase().contains(constraint.toString())
-                                || data3.toLowerCase().contains(constraint.toString())){
+                        if (data1.toLowerCase().contains(constraint.toString()) || data2.toLowerCase().contains(constraint.toString())){
                             FilteredArrList.add(new Person(mOriginalValues.get(i).getFirstName(), mOriginalValues.get(i).getLastName(),mOriginalValues.get(i).getPhoneNumber(),mOriginalValues.get(i).getBirthday()));
                         }
                     }
-                    // set the Filtered result to return
                     results.count = FilteredArrList.size();
                     results.values = FilteredArrList;
                 }
@@ -100,7 +88,7 @@ public class PersonAdapter extends BaseAdapter implements Filterable{ //TODO: TR
 
     private class ViewHolder {
         LinearLayout llContainer;
-        TextView tvName,tvPhNr, tvBDay;
+        TextView tvName;
     }
 
     @Override
@@ -114,33 +102,17 @@ public class PersonAdapter extends BaseAdapter implements Filterable{ //TODO: TR
             convertView = inflater.inflate(R.layout.item_person, null);
             holder.llContainer = (LinearLayout)convertView.findViewById(R.id.llContainer);
             holder.tvName = (TextView) convertView.findViewById(R.id.Name);
-            holder.tvPhNr = (TextView) convertView.findViewById(R.id.phoneNr);
-            holder.tvBDay = (TextView) convertView.findViewById(R.id.birthDay);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tvName.setText(mDisplayedValues.get(position).getFirstName() + " " + mDisplayedValues.get(position).getLastName());
-        holder.tvPhNr.setText(mDisplayedValues.get(position).getPhoneNumber());
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        holder.tvBDay.setText(df.format(mDisplayedValues.get(position).getBirthday().getTime()));
 
-        holder.tvBDay.setTextColor(Color.parseColor("#42C0FB"));
-        holder.tvBDay.setTextSize(18);
-        holder.tvPhNr.setTextColor(Color.parseColor("#42C0FB"));
-        holder.tvPhNr.setTextSize(18);
         holder.tvName.setTextColor(Color.parseColor("#42C0FB"));
-        holder.tvName.setTextSize(18);
+        holder.tvName.setTextSize(24);
         return convertView;
 
-        /*
-        // Populate the data into the template view using the data object
-        tvName.setText(person.getFirstName() + " " + person.getLastName());
-        tvPhNr.setText(person.getPhoneNumber());
-
-        // Return the completed view to render on screen
-        return convertView;*/
     }
 
     public int getPersonID(int position) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">S236305_mappe2</string>
+    <string name="app_name">BIRTHDAY MESSAGE APP</string>
     <string name="regContact">Register contact</string>
     <string name="showContacts">Show contacts</string>
     <string name="settings">SETTINGS</string>
@@ -9,7 +9,7 @@
     <string name="firstname">First name</string>
     <string name="lastname">Last name</string>
     <string name="phone">Phone-nr</string>
-    <string name="birthday">BIRTHDATE</string>
+    <string name="birthday">Date of birth</string>
     <string name="birtdayMessage">HAPPY BIRTHDAY!</string>
     <string name="submit">Submit changes</string>
     <string name="delete">Delete contact</string>
@@ -21,6 +21,7 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="confirm">Confirm message</string>
+    <string name="TimeAndMessage">Time and message confirmed</string>
     <string name="messageLabel">MESSAGE</string>
     <string name="timeLabel">TIME TO SEND MESSAGE</string>
     <string name="checkBoxText">SERVICE ON/OFF</string>
@@ -34,5 +35,3 @@
     <string name="langText">PLEASE SELECT DESIRED LANGUAGE</string>
 
 </resources>
-
-    <!--TODO: LEGGE STRINGS HER!!! !--><!--TODO: IMPLEMENTERE NORSK? !-->

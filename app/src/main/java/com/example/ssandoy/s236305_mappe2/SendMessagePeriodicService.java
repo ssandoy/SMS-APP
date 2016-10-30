@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -26,17 +25,23 @@ public class SendMessagePeriodicService extends Service {
         Calendar cal = Calendar.getInstance();
 
         Intent i =	new	Intent(this, SendMessageService.class);
-        PendingIntent pintent = PendingIntent.getService(this,	0,	i,	0);
+        PendingIntent pintent = PendingIntent.getService(this,	0,	i,	PendingIntent.FLAG_UPDATE_CURRENT);
 
-        //TODO: SETTE HVER GANG CONFIRMMESSAGE TRYKKES PÅ
-        cal.set(Calendar.MINUTE, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("minute", -1));
-        cal.set(Calendar.HOUR_OF_DAY, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("hour", -1));
-        Log.d("MINUTE", ""+PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("minute", -1));
-        Log.d("HOUR", ""+ PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("hour", -1));
 
-        AlarmManager alarm =  (AlarmManager)getSystemService(Context.ALARM_SERVICE); //TODO: SETREPEATING IS CALLED AT CREATION.
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pintent); //TODO: setExact vs setReapeating SKRIV OM VALGET OG API19
+        cal.set(Calendar.MINUTE, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("minute", 1));
+        cal.set(Calendar.HOUR_OF_DAY, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("hour", 1));
+        cal.set(Calendar.SECOND, 0);
+        AlarmManager alarm  = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        long time = 0;
+        if(cal.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()) //CHECK IF TIME IS IN THE PAST, THEN EXECUTE NEXT DAY
+        {
+            time = cal.getTimeInMillis() + 1000*60*60*24;
+            cal.setTimeInMillis(time);
+        } else {
+            time = cal.getTimeInMillis();
+        }
 
-        return super.onStartCommand(intent, flags, startId); //TODO: VS SERVICE_START NOT STICKY?
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, time, AlarmManager.INTERVAL_DAY, pintent);
+        return Service.START_NOT_STICKY;
     }
 }

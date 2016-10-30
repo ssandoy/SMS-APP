@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.example.ssandoy.s236305_mappe2"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
